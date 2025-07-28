@@ -1,0 +1,54 @@
+{
+  "name": "devcontainer-terminal-paste",
+  "displayName": "DevContainer Terminal Paste",
+  "description": "Paste images from clipboard to DevContainer workspace when using terminal",
+  "publisher": "touyu",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./src/extension.js",
+  "extensionKind": ["ui", "workspace"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "devcontainer-terminal-paste.pasteImage",
+        "title": "Paste Image from Clipboard"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "devcontainer-terminal-paste.pasteImage",
+        "key": "cmd+v",
+        "mac": "cmd+v",
+        "when": "terminalFocus"
+      }
+    ],
+    "configuration": {
+      "title": "DevContainer Terminal Paste",
+      "properties": {
+        "clipboardImagePaste.saveDir": {
+          "type": "string",
+          "default": "images",
+          "description": "Directory to save clipboard images (relative to workspace root)"
+        },
+        "clipboardImagePaste.fileNamePattern": {
+          "type": "string",
+          "default": "clipboard-{timestamp}.png",
+          "description": "File name pattern for saved images. {timestamp} will be replaced with current timestamp"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\"",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^2.19.0"
+  }
+}
