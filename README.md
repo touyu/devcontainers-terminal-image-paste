@@ -1,6 +1,6 @@
-# DevContainer Terminal Image Paste
+# DevContainers Terminal Image Paste
 
-VS Code extension that enables pasting images from clipboard directly into DevContainer terminals.
+VS Code extension that saves clipboard images to DevContainer workspaces and provides the file path in the terminal.
 
 ## Features
 
@@ -54,8 +54,8 @@ Configure the extension through VS Code settings:
 ```json
 {
   "devcontainersTerminalImagePaste.enabled": true,
-  "devcontainersTerminalImagePaste.saveDir": "./screenshots",
-  "devcontainersTerminalImagePaste.fileNamePattern": "screenshot-{timestamp}.png"
+  "devcontainersTerminalImagePaste.saveDir": "./tmp",
+  "devcontainersTerminalImagePaste.fileNamePattern": "clipboard-{timestamp}.png"
 }
 ```
 

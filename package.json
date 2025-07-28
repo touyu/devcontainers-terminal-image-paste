@@ -41,7 +41,7 @@
         },
         "devcontainersTerminalImagePaste.saveDir": {
           "type": "string",
-          "default": "tmp",
+          "default": "./tmp",
           "description": "Directory to save clipboard images (relative to workspace root)"
         },
         "devcontainersTerminalImagePaste.fileNamePattern": {
