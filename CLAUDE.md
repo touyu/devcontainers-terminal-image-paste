@@ -23,7 +23,7 @@ npm install
 
 The extension is a single-file VS Code extension (src/extension.js) that:
 
-1. **Activation**: Registers a command `devcontainer-terminal-paste.pasteImage` that overrides Cmd+V in terminal when in a remote environment
+1. **Activation**: Registers a command `devcontainers-terminal-image-paste.pasteImage` that overrides Cmd+V in terminal when in a remote environment
 2. **Clipboard Detection**: Uses AppleScript on macOS to detect and retrieve images from clipboard (both file references and raw image data)
 3. **Image Saving**: Saves images to a configurable directory in the workspace with timestamped filenames
 4. **Terminal Integration**: Inserts the saved file path into the active terminal
@@ -33,7 +33,7 @@ The extension is a single-file VS Code extension (src/extension.js) that:
 - **Platform**: Currently macOS-only due to AppleScript dependency
 - **Image Formats**: Supports PNG, JPG, JPEG, GIF, BMP, TIFF, WEBP
 - **Configuration Options**:
-  - `clipboardImagePaste.enabled`: Toggle feature on/off
-  - `clipboardImagePaste.saveDir`: Directory for saved images (default: "images")
-  - `clipboardImagePaste.fileNamePattern`: Filename pattern with {timestamp} placeholder
+  - `devcontainersTerminalImagePaste.enabled`: Toggle feature on/off
+  - `devcontainersTerminalImagePaste.saveDir`: Directory for saved images (default: "images")
+  - `devcontainersTerminalImagePaste.fileNamePattern`: Filename pattern with {timestamp} placeholder
 - **Fallback**: If no image is detected or on error, falls back to normal terminal paste command

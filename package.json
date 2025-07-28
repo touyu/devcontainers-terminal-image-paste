@@ -1,6 +1,6 @@
 {
-  "name": "devcontainer-terminal-paste",
-  "displayName": "DevContainer Terminal Paste",
+  "name": "devcontainers-terminal-image-paste",
+  "displayName": "DevContainers Terminal Image Paste",
   "description": "Paste images from clipboard to DevContainer workspace when using terminal",
   "publisher": "touyu",
   "version": "0.0.1",
@@ -18,33 +18,33 @@
   "contributes": {
     "commands": [
       {
-        "command": "devcontainer-terminal-paste.pasteImage",
+        "command": "devcontainers-terminal-image-paste.pasteImage",
         "title": "Paste Image from Clipboard"
       }
     ],
     "keybindings": [
       {
-        "command": "devcontainer-terminal-paste.pasteImage",
+        "command": "devcontainers-terminal-image-paste.pasteImage",
         "key": "cmd+v",
         "mac": "cmd+v",
         "when": "terminalFocus && remoteName"
       }
     ],
     "configuration": {
-      "title": "DevContainer Terminal Paste",
+      "title": "DevContainers Terminal Image Paste",
       "properties": {
-        "clipboardImagePaste.enabled": {
+        "devcontainersTerminalImagePaste.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable clipboard image paste feature in this workspace",
           "scope": "resource"
         },
-        "clipboardImagePaste.saveDir": {
+        "devcontainersTerminalImagePaste.saveDir": {
           "type": "string",
-          "default": "images",
+          "default": "tmp",
           "description": "Directory to save clipboard images (relative to workspace root)"
         },
-        "clipboardImagePaste.fileNamePattern": {
+        "devcontainersTerminalImagePaste.fileNamePattern": {
           "type": "string",
           "default": "clipboard-{timestamp}.png",
           "description": "File name pattern for saved images. {timestamp} will be replaced with current timestamp"

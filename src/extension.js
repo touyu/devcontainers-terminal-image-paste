@@ -10,15 +10,15 @@ const execFileAsync = promisify(execFile);
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-    console.log('DevContainer Terminal Paste extension is now active');
+    console.log('DevContainer Terminal Image Paste extension is now active');
     console.log('Extension running on:', process.platform);
     console.log('Extension host:', vscode.env.remoteName || 'local');
     console.log('Is remote:', vscode.env.remoteName ? true : false);
 
-    let disposable = vscode.commands.registerCommand('devcontainer-terminal-paste.pasteImage', async () => {
+    let disposable = vscode.commands.registerCommand('devcontainers-terminal-image-paste.pasteImage', async () => {
         try {
             // Check if the feature is enabled in workspace settings
-            const config = vscode.workspace.getConfiguration('clipboardImagePaste');
+            const config = vscode.workspace.getConfiguration('devcontainersTerminalImagePaste');
             const isEnabled = config.get('enabled', true);
             
             if (!isEnabled) {
@@ -125,7 +125,7 @@ async function saveImageToWorkspace(sourcePath) {
         return null;
     }
 
-    const config = vscode.workspace.getConfiguration('clipboardImagePaste');
+    const config = vscode.workspace.getConfiguration('devcontainersTerminalImagePaste');
     const saveDir = config.get('saveDir', 'images');
     const fileNamePattern = config.get('fileNamePattern', 'clipboard-{timestamp}.png');
 

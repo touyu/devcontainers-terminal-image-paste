@@ -1,4 +1,4 @@
-# DevContainer Terminal Paste
+# DevContainer Terminal Image Paste
 
 VS Code extension that enables pasting images from clipboard directly into DevContainer terminals.
 
@@ -15,7 +15,7 @@ VS Code extension that enables pasting images from clipboard directly into DevCo
 - macOS (currently only supports macOS due to AppleScript dependency)
 - Active DevContainer or remote connection
 
-## Installation
+## Installation 
 
 Install from the VS Code Marketplace or manually:
 
@@ -30,7 +30,7 @@ npm install
 npm run package
 
 # Install the VSIX file in VS Code
-code --install-extension devcontainer-terminal-paste-0.0.1.vsix
+code --install-extension devcontainers-terminal-image-paste-0.0.1.vsix
 ```
 
 ## Usage
@@ -44,18 +44,18 @@ code --install-extension devcontainer-terminal-paste-0.0.1.vsix
 
 Configure the extension through VS Code settings:
 
-- `clipboardImagePaste.enabled`: Enable/disable the extension (default: `true`)
-- `clipboardImagePaste.saveDir`: Directory to save images relative to workspace root (default: `"images"`)
-- `clipboardImagePaste.fileNamePattern`: Filename pattern for saved images (default: `"clipboard-{timestamp}.png"`)
+- `devcontainersTerminalImagePaste.enabled`: Enable/disable the extension (default: `true`)
+- `devcontainersTerminalImagePaste.saveDir`: Directory to save images relative to workspace root (default: `"images"`)
+- `devcontainersTerminalImagePaste.fileNamePattern`: Filename pattern for saved images (default: `"clipboard-{timestamp}.png"`)
   - `{timestamp}` will be replaced with current date/time
 
 ### Example Configuration
 
 ```json
 {
-  "clipboardImagePaste.enabled": true,
-  "clipboardImagePaste.saveDir": "./screenshots",
-  "clipboardImagePaste.fileNamePattern": "screenshot-{timestamp}.png"
+  "devcontainersTerminalImagePaste.enabled": true,
+  "devcontainersTerminalImagePaste.saveDir": "./screenshots",
+  "devcontainersTerminalImagePaste.fileNamePattern": "screenshot-{timestamp}.png"
 }
 ```
 
