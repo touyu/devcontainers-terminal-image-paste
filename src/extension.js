@@ -17,6 +17,16 @@ function activate(context) {
 
     let disposable = vscode.commands.registerCommand('devcontainer-terminal-paste.pasteImage', async () => {
         try {
+            // Check if the feature is enabled in workspace settings
+            const config = vscode.workspace.getConfiguration('clipboardImagePaste');
+            const isEnabled = config.get('enabled', true);
+            
+            if (!isEnabled) {
+                // Feature is disabled, perform normal paste
+                await vscode.commands.executeCommand('workbench.action.terminal.paste');
+                return;
+            }
+            
             // Get clipboard image using AppleScript
             const imagePath = await getClipboardImage();
             

@@ -1,47 +1,86 @@
 # DevContainer Terminal Paste
 
-VS Code 拡張機能：Mac のクリップボードから画像を DevContainer のワークスペースに貼り付けます。
+VS Code extension that enables pasting images from clipboard directly into DevContainer terminals.
 
-## 機能
+## Features
 
-- VS Code ターミナルで `Cmd+V` を押すと、クリップボードの画像をワークスペースに保存
-- 画像がない場合は通常のテキスト貼り付けを実行
-- 保存後、ターミナルに相対パスを自動入力
-- 保存先ディレクトリとファイル名パターンをカスタマイズ可能
-- 複数の画像形式に対応（PNG, JPG, JPEG, GIF, BMP, TIFF, WebP）
-- ファイルからコピーした画像とスクリーンショットの両方に対応
+- **Image Paste in Terminal**: Press `Cmd+V` in a DevContainer terminal to automatically save clipboard images to your workspace
+- **Smart Detection**: Automatically detects images in clipboard and falls back to normal paste for text
+- **Customizable**: Configure save location and filename patterns
+- **File Path Insertion**: Automatically inserts the saved image path into your terminal
 
-## 使い方
+## Requirements
 
-1. 画像をクリップボードにコピー（スクリーンショット等）
-2. VS Code ターミナルにフォーカス
-3. `Cmd+V` を押す
-4. 画像がワークスペースに保存され、パスがターミナルに表示される
+- VS Code 1.74.0 or higher
+- macOS (currently only supports macOS due to AppleScript dependency)
+- Active DevContainer or remote connection
 
-## 設定
+## Installation
 
-設定から以下の項目をカスタマイズできます：
+Install from the VS Code Marketplace or manually:
 
-- `clipboardImagePaste.saveDir`: 画像保存ディレクトリ（デフォルト: `images`）
-- `clipboardImagePaste.fileNamePattern`: ファイル名パターン（デフォルト: `clipboard-{timestamp}.png`）
-  - `{timestamp}` は現在時刻に置換されます
+```bash
+# Clone the repository
+git clone https://github.com/touyu/devcontainers-terminal-image-paste.git
 
-## 技術詳細
+# Install dependencies
+npm install
 
-- macOS の `osascript` と AppleScript を使用してクリップボード画像を取得
-- `extensionKind: ["ui", "workspace"]` により、UI 側でクリップボード処理を実行
-- VS Code の `workspace.fs` API を使用してファイルを保存
-- ファイルURLと画像データの両方のクリップボード形式に対応
-- 一時ファイルは保存後に自動削除
+# Package the extension
+npm run package
 
-## 依存関係
+# Install the VSIX file in VS Code
+code --install-extension devcontainer-terminal-paste-0.0.1.vsix
+```
 
-- macOS のみ対応（AppleScript を使用するため）
-- VS Code 1.74.0 以上
-- 追加の CLI ツールは不要
+## Usage
 
-## 制限事項
+1. Open a terminal in your DevContainer
+2. Copy an image to your clipboard (screenshot, file copy, etc.)
+3. Focus the terminal and press `Cmd+V`
+4. The image will be saved to your workspace and the file path inserted
 
-- macOS 専用（Windows/Linux では動作しません）
-- DevContainer 環境での使用を想定
-- ワークスペースフォルダが開かれている必要があります
+## Extension Settings
+
+Configure the extension through VS Code settings:
+
+- `clipboardImagePaste.enabled`: Enable/disable the extension (default: `true`)
+- `clipboardImagePaste.saveDir`: Directory to save images relative to workspace root (default: `"images"`)
+- `clipboardImagePaste.fileNamePattern`: Filename pattern for saved images (default: `"clipboard-{timestamp}.png"`)
+  - `{timestamp}` will be replaced with current date/time
+
+### Example Configuration
+
+```json
+{
+  "clipboardImagePaste.enabled": true,
+  "clipboardImagePaste.saveDir": "./screenshots",
+  "clipboardImagePaste.fileNamePattern": "screenshot-{timestamp}.png"
+}
+```
+
+## Supported Image Formats
+
+- PNG
+- JPG/JPEG
+- GIF
+- BMP
+- TIFF
+- WebP
+
+## Known Issues
+
+- Currently only supports macOS
+- Requires DevContainer or remote connection to activate
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This extension is licensed under the [MIT License](LICENSE.md).
+
+## Author
+
+Yuto Akiba ([@touyu](https://github.com/touyu))
